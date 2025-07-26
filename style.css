@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    background: #fda403; 
+}
+
+html{
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+html, body {
+  height: 100vh;
+  margin: 0;
+}
+
+h1{
+    margin: 0;
+}
+
+img{
+    width: 200px;
+    gap: 32px;
+}
+
+img:hover{
+    transform: scale(1.1);
+}
+
+footer{
+    background: #8a1253;
+    margin: 0;
+    padding: 16px;
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.header{
+    margin: 0;
+    background: #c51350;
+    padding: 16px;
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.choices, h2, .output{
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+}
