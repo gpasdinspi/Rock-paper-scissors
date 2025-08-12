@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
     let nb = Math.floor((Math.random()*100)+1);
     let choice;
@@ -14,94 +17,83 @@ function getComputerChoice(){
 }
 
 
-function playRound(humanChoice , computerChoice, humanScore, computerScore){
+function playRound(humanChoice , computerChoice){
 
     let player1 = String(humanChoice).toLowerCase();
     let player2 = String(computerChoice).toLowerCase();
     let winner;
-    let message;
+    let message = "";
 
     if (player1 == player2){
-        console.log("It's a tie");
+        message = "It's a tie";
     }
     else if (player1 == "rock" && player2 == "paper"){
-        console.log("you lose, paper beats rock");
+        message = "you lose, paper beats rock";
         winner = player2;
     }
     else if (player1 == "rock" && player2 == "scissors"){
-        console.log("you win, rock beats scissors");
+        message = "you win, rock beats scissors";
         winner = player1;
     }
     else if (player1 == "paper" && player2 == "rock"){
-        console.log("you win, paper beats rock");
+        message = "you win, paper beats rock";
         winner = player1;
     }
     else if (player1 == "paper" && player2 == "scissors"){
-        console.log("you lose, scissors beats paper");
+        message = "you lose, scissors beats paper";
         winner = player2;
     }
     else if (player1 == "scissors" && player2 == "paper"){
-        console.log("you win, scissors beats paper");
+        message = "you win, scissors beats paper";
         winner = player1;
     }
     else if (player1 == "scissors" && player2 == "rock"){
-        console.log("you lose, rock beats scissors");
+        message = "you lose, rock beats scissors";
         winner = player2;
     } 
     if (winner === player1 ){
         humanScore +=1;
-        message = "you win !"
     }else if (winner === player2){
         computerScore +=1;
-        message = "you lose !"
-    }else {
-        message = "It's a tie !"
     }
 
     const outp = document.querySelector('.output');
     outp.textContent = message;
 
+    const scoreP = document.querySelector('.score');
+    scoreP.textContent = `humain score : ${humanScore}   computer score : ${computerScore}`
 
-
-    return {
-        computerScore : computerScore, 
-        humanScore : humanScore  
+    if (humanScore === 5 || computerScore === 5) {
+        document.querySelector('.output').textContent += " — Game Over!";
+        if (humanScore > computerScore){
+            document.querySelector('.output').textContent = "\nYou are the winner !"
+        }else{
+            document.querySelector('.output').textContent = "\nThe computer is the winner !"
+        }
+        
+        humanScore = 0;
+        computerScore = 0;
+        
     }
 }
 
 function playGame(){
 
-    let humanScore = 0;
-    let computerScore = 0;
-    let score
+    const rock = document.querySelector('.rock')
+    rock.addEventListener('click', () => {
+        playRound("rock", getComputerChoice())
+    })
 
-    while (true){
+    const paper = document.querySelector('.paper')
+    paper.addEventListener('click', () => {
+        playRound("paper", getComputerChoice())
+    })
 
-        let player2 = getComputerChoice();
+    const scissors = document.querySelector('.scissors')
+    scissors.addEventListener('click', () => {
+        playRound("scissors", getComputerChoice())
+    })
 
-        const rock = document.querySelector('.rock')
-        rock.addEventListener('click', () => {
-            score = playRound("rock", player2, humanScore, computerScore)
-        })
-
-        const paper = document.querySelector('.paper')
-        paper.addEventListener('click', () => {
-            score = playRound("paper", player2, humanScore, computerScore)
-        })
-
-        const scissors = document.querySelector('.scissors')
-        scissors.addEventListener('click', () => {
-            score = playRound("scissors", player2, humanScore, computerScore)
-        })
-        humanScore = score.humanScore;
-        computerScore = score.computerScore;
-
-        if (humanScore == 5 || computerScore == 5){
-            break;
-        }
-    }
-    console.log(`humain score : ${humanScore}`)
-    console.log(`computer score : ${computerScore}`)
 }
 
 playGame();

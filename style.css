@@ -1,18 +1,20 @@
 body{
     margin: 0;
-    background: #fda403; 
-}
-
-html{
-    display: flex;
-    flex: 1 0 auto;
-    flex-direction: column;
-    justify-content: space-between;
+    background: #f4caeb; 
 }
 
 html, body {
-  height: 100vh;
+  height: 100%;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.content{
+    display: flex;
+    flex: 1;
+    flex-direction: column;
 }
 
 h1{
@@ -31,9 +33,9 @@ img:hover{
 footer{
     background: #8a1253;
     margin: 0;
-    padding: 16px;
+    padding: 32px;
     display: flex;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
 }
@@ -43,12 +45,12 @@ footer{
     background: #c51350;
     padding: 16px;
     display: flex;
-    flex: 1 0 auto;
+    flex: 0 0 auto;
     align-items: center;
     justify-content: center;
 }
 
-.choices, h2, .output{
+.choices, h2, .output, .score{
     display: flex;
     flex: 1 0 auto;
     align-items: center;
